@@ -5,6 +5,8 @@ import { HiHome, HiMagnifyingGlass, HiStar, HiPlayCircle } from 'react-icons/hi2
 import { FaTv } from "react-icons/fa";
 import { HiPlus, HiDotsVertical } from 'react-icons/hi'
 import HeaderItems from "./HeaderItems.jsx";
+
+
 export default function Header() {
     const [toggle, setToggle] = useState(false)
     const navItems = [
@@ -40,28 +42,28 @@ export default function Header() {
             <div className={'hidden md:flex items-center gap-8'}>
                 {
                     navItems.map((item) => (
-                        <HeaderItems name={item.name} icon={item.icon}/>
+                        <HeaderItems key={item.name} name={item.name} icon={item.icon}/>
                     ))
                 }
             </div>
             <div className={' md:hidden flex items-center gap-8'}>
                 {
                     navItems.map((item, index) => index < 3 && (
-                        <HeaderItems name={item.name} icon={item.icon}/>
+                        <HeaderItems key={item.name} name={item.name} icon={item.icon}/>
                     ))
                 }
             </div>
-            <div className={'md:hidden '}>
-                <HeaderItems name={""} icon={HiDotsVertical()}/>
-                { toggle ? <div onClick={()=> setToggle(!toggle)} className={'absolute mt-3 border-[1px] border-gray-700 p-3 rounded-[3px] px-5 py-4'}>
-                    {
-                        navItems.map((item, index) => index >= 3 && (
-                            <HeaderItems name={item.name} icon={item.icon}>
-                                <h2 className={'text-[15px] font-semibold'}>{item.name}</h2>
-                            </HeaderItems>
-                        ))
-                    }
-                        </div>: null}
+                <div className={'md:hidden z-10 '}  onClick={()=> setToggle(!toggle)} >
+                    <div className={'w-6 h-6'}><HiDotsVertical className="w-6 h-6" /></div>
+                    { toggle ? <div className={'absolute mt-3 border-[1px] border-gray-700 bg-black rounded-[3px] px-5 py-4'}>
+                        {
+                            navItems.map((item, index) => index >= 3 && (
+                                <HeaderItems name={item.name} icon={item.icon} key={item.name}>
+                                    <h2 className={'text-[15px] font-semibold'}>{item.name}</h2>
+                                </HeaderItems>
+                            ))
+                        }
+            </div>: null}
             </div>
         </div>
         <img src={user} alt="" className={'w-[40px] h-[40px] rounded-full'}/>

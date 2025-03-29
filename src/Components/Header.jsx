@@ -39,23 +39,23 @@ export default function Header() {
     <div className={'flex items-center justify-between px-4 py-4'}>
         <div className={'flex items-center gap-8'}>
             <img src={logo} className={'w-[60px] md:w-[70px] object-cover '}/>
-            <div className={'hidden md:flex items-center gap-8'}>
+            <div className={'hidden  md:flex items-center gap-8'}>
                 {
                     navItems.map((item) => (
-                        <HeaderItems name={item.name} icon={item.icon}/>
+                        <HeaderItems key={item.name} name={item.name} icon={item.icon}/>
                     ))
                 }
             </div>
             <div className={' md:hidden flex items-center gap-8'}>
                 {
                     navItems.map((item, index) => index < 3 && (
-                        <HeaderItems name={item.name} icon={item.icon}/>
+                        <HeaderItems key={item.name} name={item.name} icon={item.icon}/>
                     ))
                 }
             </div>
-                <div className={'md:hidden '}  onClick={()=> setToggle(!toggle)} >
-                    <HeaderItems name={""} icon={<HiDotsVertical className="w-6 h-6" />} />
-                    { toggle ? <div className={'absolute mt-3 border-[1px] border-gray-700 p-3 rounded-[3px] px-5 py-4'}>
+                <div className={'md:hidden z-10 '}  onClick={()=> setToggle(!toggle)} >
+                    <div className={'w-6 h-6'}><HiDotsVertical className="w-6 h-6" /></div>
+                    { toggle ? <div className={'absolute mt-3 border-[1px] border-gray-700 bg-black rounded-[3px] px-5 py-4'}>
                         {
                             navItems.map((item, index) => index >= 3 && (
                                 <HeaderItems name={item.name} icon={item.icon} key={item.name}>
