@@ -5,8 +5,6 @@ import { HiHome, HiMagnifyingGlass, HiStar, HiPlayCircle } from 'react-icons/hi2
 import { FaTv } from "react-icons/fa";
 import { HiPlus, HiDotsVertical } from 'react-icons/hi'
 import HeaderItems from "./HeaderItems.jsx";
-
-
 export default function Header() {
     const [toggle, setToggle] = useState(false)
     const navItems = [
@@ -53,17 +51,17 @@ export default function Header() {
                     ))
                 }
             </div>
-                <div className={'md:hidden '}  onClick={()=> setToggle(!toggle)} >
-                    <HeaderItems name={""} icon={<HiDotsVertical className="w-6 h-6" />} />
-                    { toggle ? <div className={'absolute mt-3 border-[1px] border-gray-700 p-3 rounded-[3px] px-5 py-4'}>
-                        {
-                            navItems.map((item, index) => index >= 3 && (
-                                <HeaderItems name={item.name} icon={item.icon} key={item.name}>
-                                    <h2 className={'text-[15px] font-semibold'}>{item.name}</h2>
-                                </HeaderItems>
-                            ))
-                        }
-            </div>: null}
+            <div className={'md:hidden '}>
+                <HeaderItems name={""} icon={HiDotsVertical()}/>
+                { toggle ? <div onClick={()=> setToggle(!toggle)} className={'absolute mt-3 border-[1px] border-gray-700 p-3 rounded-[3px] px-5 py-4'}>
+                    {
+                        navItems.map((item, index) => index >= 3 && (
+                            <HeaderItems name={item.name} icon={item.icon}>
+                                <h2 className={'text-[15px] font-semibold'}>{item.name}</h2>
+                            </HeaderItems>
+                        ))
+                    }
+                        </div>: null}
             </div>
         </div>
         <img src={user} alt="" className={'w-[40px] h-[40px] rounded-full'}/>
