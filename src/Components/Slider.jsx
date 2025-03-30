@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import GlobalApi from "../Services/GlobalApi";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
+
+
 export const Slider = () => {
     const [moviesList, setMoviesList] = useState([]);
     const fetchTrendingMovies = async () => {
