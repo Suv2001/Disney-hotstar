@@ -3,6 +3,8 @@ import './App.css'
 import Header from './Components/Header'
 import {Slider} from "./Components/Slider.jsx";
 import {ProductionHouses} from "./Components/ProductionHouses.jsx";
+import {GenreMovieList} from "./Components/GenreMovieList.jsx";
+import {GenresList} from "./Constant/GenresList.jsx";
 function App() {
 
 
@@ -11,7 +13,8 @@ function App() {
       <Header/>
         <Slider/>
         <ProductionHouses/>
-       
+      <GenreMovieList/>
+       {/*<GenresList/>*/}
     </div>
   )
 }

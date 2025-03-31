@@ -43,7 +43,7 @@ export const ProductionHouses = () => {
         }
     ]
     return (
-        <div className={'flex'} className={'flex gap-2 md:gap-5 p-2 md:px-16 px-5'}>
+        <div className={'flex gap-2 md:gap-5 p-2 md:px-16 px-5'}>
             {
                 productionHouseList.map((item) => (
                     <div key={item.id} className={'border-[2px] z-[1] shadow-xl shadow-black border-gray-600 rounded-lg hover:scale-110 transition-all duration-300 easy-in-out cursor-pointer '}>

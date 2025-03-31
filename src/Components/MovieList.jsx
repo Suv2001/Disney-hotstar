@@ -1,0 +1,35 @@
+import GlobalApi from "../Services/GlobalApi.jsx";
+import {useState, useEffect, useRef} from "react";
+import {MovieCard} from "./MovieCard.jsx";
+import { useSlider } from "./Slider.jsx";
+import {HiChevronLeft, HiChevronRight} from "react-icons/hi";
+
+export const MovieList = ({genreId}) => {
+    const { leftScroll, rightScroll, sliderRef } = useSlider();
+    const [moviesList, setMoviesList] = useState([]);
+
+    useEffect(() => {
+        GlobalApi.getMovieByGenreID(genreId).then(response => {
+            setMoviesList(response);
+        });
+    },[genreId]);
+
+    return (
+        <div>
+            <div className="hidden md:block md:mt-[150px] absolute left-0 ml-4 mt-2 z-10 bg-black/50 rounded-full p-2 hover:bg-black/75 transition-all duration-300">
+                <HiChevronLeft className={'text-white text-[30px] hover:cursor-pointer hover:scale-125'} onClick={leftScroll} />
+            </div>
+            <div className="hidden md:block md:mt-[150px] absolute right-0 mr-4 mt-2 z-10 bg-black/50 rounded-full p-2 hover:bg-black/75 transition-all duration-300">
+                <HiChevronRight className={'text-white text-[30px] hover:cursor-pointer hover:scale-125'} onClick={rightScroll} />
+            </div>
+            <div className={'flex overflow-x-auto py-8 px-2 gap-8 scrollbar-hide scroll-smooth'} ref={sliderRef}>
+                    {
+                        moviesList.map((item) =>(
+                            <MovieCard key={item.id} movie={item}/>
+                        ))
+                    }
+            </div>
+
+        </div>
+    )
+}
