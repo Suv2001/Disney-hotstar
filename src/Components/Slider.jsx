@@ -13,7 +13,7 @@ export const useSlider = () => {
             console.error("Failed to fetch trending movies", error);
         }
     };
-    
+
 
     useEffect(() => {
         fetchTrendingMovies();
